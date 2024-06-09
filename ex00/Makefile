@@ -2,11 +2,13 @@ NAME = megaphone
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
 RM = rm -rf
-FUN = megaphone.cpp\
-OBJ = (%.o = %.cpp)
+FUN = megaphone.cpp
+OBJ = $(FUN:%.o=%.c)
 
-all :$(OBJ)
-	$(CC) $(CFLAGS) $(FUN)
+all :$(NAME)
+
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 clean :
-	$(RM) $(OBJ)
+	$(RM) $(NAME)
 re : clean all
