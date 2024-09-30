@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:01:48 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/09/30 10:15:15 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:49:55 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 
 
 private:
-  Contact contact[8];
+  //Contact contact[8];
 
 
 
@@ -42,6 +42,14 @@ class Contact {
 
 public:
 
+  int notEmpty(){
+    return (!FirstName.empty() || !LastName.empty() || !NickName.empty() || !PhoneNumber.empty() || !DarkestSecret.empty());
+  }
+  
+  int isValid(){
+    return (1);
+  }
+  
   
 
   
