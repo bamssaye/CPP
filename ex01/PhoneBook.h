@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:01:45 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/06/09 05:27:38 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/09/30 09:09:52 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,9 @@
 
 #include <iostream>
 #include <string.h>
+#include "PhoneBook.hpp"
 
-
-class PhoneBook
-{
-    public:
-        char contact[8];
-    private:  
-};
-
-class Contact
-{
-  public:
-    std::string FirstName;
-    std::string LastName;
-    std::string NickName;    
-  private:    
-};
-
+#define MSG "Error, use the executable without args :)"
 
 
 #endif
