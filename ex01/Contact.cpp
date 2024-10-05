@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 02:04:07 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/05 06:21:28 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/10/05 07:17:07 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,21 @@ bool Contact::checkempty(){
 }
 
 bool ValiStrin(std::string &str){
-    for (std::size_t i = 0; str.length() ; i++){
-        if (isalpha(str[i]))
-            return (true);
+
+    for (std::size_t i = 0; i < str.length() ; i++){
+        if (!isalpha(str[i])){
+            return (1);
+        }    
     }
-    return (false);
+    return (0);
 }
 
 bool ValiNumber(std::string &str){
-    for (std::size_t i = 0; str.length() ; i++){
+    for (std::size_t i = 0; i < str.length() ; i++){
         if (!isdigit(str[i]))
-            return (true);
+            return (1);
     }
-    return (false);
+    return (0);
 }
 
 int checkdata(std::string &str, int choise){
@@ -50,23 +52,23 @@ int checkdata(std::string &str, int choise){
     switch (choise)
     {
     case 1: 
-        if (str.empty() || !ValiStrin(str))
-            return ((std::cout << "Please, Enter  Valid Name!! : "), 1);
+        if (str.empty() || ValiStrin(str)){
+            return ((std::cout << "Please, Enter  Valid Name!! : "), 1);}
         break;
     case 2: 
-        if (str.empty() && ValiStrin(str))
+        if (str.empty() || ValiStrin(str))
             return ((std::cout << "Please, Enter  Valid Last Name!! : "),1);
         break;
     case 3: 
-        if (str.empty() && ValiStrin(str))
+        if (str.empty() || ValiStrin(str))
             return ((std::cout << "Please, Enter  Valid Nickname!! : "),1);
         break;
     case 4: 
-        if (str.empty() && ValiNumber(str))
+        if (str.empty() || ValiNumber(str))
             return ((std::cout << "Please, Enter  Phone Number!! : "),1);
         break;
     case 5: 
-        if (str.empty() && (ValiNumber(str) || ValiStrin(str)))
+        if (str.empty() || ValiNumber(str) || ValiStrin(str))
             return ((std::cout << "Please, Enter  Darkest Secret!! : "),1);
         break;
     }
