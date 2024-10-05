@@ -2,7 +2,7 @@ NAME = phonebook
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
 RM = rm -rf
-FUN = PhoneBook.cpp
+FUN = main.cpp
 OBJ = $(FUN:%.o=%.c)
 
 all :$(NAME)
