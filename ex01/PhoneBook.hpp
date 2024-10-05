@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:01:48 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/03 15:43:41 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/10/05 04:45:53 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@
 
 class PhoneBook {
 public:
-  Contact contacts[8];
- // PhoneBook();
-  void add(){
-        std::cout << "hello Phone Book \n" << std::endl;
-  };
-  void show();
-  
+    
+    PhoneBook();
+    int count;
+    void AddNewContact();
+    void SearchContact();
+    void checkempty();
+      
 private:
     
+    Contact contacts[8];
 };
 
 #endif

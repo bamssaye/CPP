@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:01:45 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/03 15:37:23 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/10/05 05:05:37 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 #include <iostream>
 #include <cctype>
 #include <string.h>
+#include <cstdlib>
+
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 #define CH "Please, Enter your choice [ADD], [SEARCH], [EXIT] : "
 #define MSG "Error, Use the executable without args :)"

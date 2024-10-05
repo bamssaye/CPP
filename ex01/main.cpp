@@ -6,20 +6,21 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:19:49 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/03 15:46:33 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/10/05 04:42:15 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.h"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 int set_option(PhoneBook &PBook, std::string &choice)
 {
-    PBook.add();
     if (choice == "ADD"){
-        std::cout << choice << std::endl;
+        PBook.AddNewContact();
     }
     else if (choice == "SEARCH"){
-        std::cout << choice << std::endl;
+        PBook.SearchContact();
     }
     return (0);
 }
