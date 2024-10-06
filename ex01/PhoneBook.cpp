@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:23:27 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/05 04:41:03 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/10/06 09:24:31 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,43 @@ void PhoneBook::AddNewContact(){
 
 void PhoneBook::SearchContact(){
 
-	std::string index_str;
-	std::cout << "Enter The Contact Index: ";
-	std::getline(std::cin, index_str);
-
-	if (index_str.length() == 1 && std::isdigit(index_str[0]) )
-	{
-		int index = index_str[0] - 48;
-		if (index >= 1 && index <= 8 && !contacts[index - 1].checkempty())
-		{
-			std::cout << index << std::endl;
-			contacts[index - 1].ShowInfo();
-			std::cout << "---------------" << std::endl;
-			return ;
-		}
+	std::string _id;
+	int i = -1;
+	
+	std::cout   << "\n" << std::right << std::setw(15) << "Index"
+                << std::right << std::setw(15) << "First Name"
+                << std::right << std::setw(18) << "Last Name"
+				<< std::right << std::setw(21) << "Nick Name"
+                << std::endl;
+	std::cout   << std::string(7 , ' ') << std::string(16 * 4, '-') << std::endl;
+	if(contacts[0].checkempty()){
+		std::cout	<< "No User Found, Choise (ADD) option To add the first Contact. \n"
+					<< std::string(std::string(16 * 4, '-')) << std::endl;
 	}
-	std::cout << "No User In This Index!!" << std::endl;
-
+	else{
+		while (!contacts[++i].checkempty()){
+			std::cout << std::right << std::setw(15) << i + 1 << " | ";
+			contacts[i].PrintData();
+		}
+		std::cout << "Enter The Contact Index: ";
+		std::getline(std::cin, _id);
+		if(std::cin.eof()){
+			exit(1);
+		}
+		if (_id.length() == 1 && std::isdigit(_id[0]) )
+		{
+			int i = _id[0] - 48;
+			std::string row = std::string(10 * 5, '-');
+			if (i >= 1 && i <= 8 && !contacts[i - 1].checkempty())
+			{
+				std::cout << row << std::endl;
+				std::cout << std::string(3, ' ') << "Contact Id : " << i << std::endl;
+				std::cout << row << std::endl;
+				contacts[i - 1].ShowInfo();
+				std::cout << row << std::endl;
+				return ;
+			}
+		}
+		std::cout << "User Not found !!" << std::endl;
+	}
 }

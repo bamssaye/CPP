@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:13:14 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/05 05:05:20 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/10/06 08:06:04 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cctype>
 #include <string.h>
 #include <cstdlib>
+#include <iomanip>
 
 class Contact {
 public:
@@ -34,6 +35,7 @@ public:
     void AddInfo();
     void ShowInfo();
     bool checkempty();
+    void PrintData();
     
 private:
   std::string FirstName, LastName, NickName, PhoneNumber, DarkestSecret;

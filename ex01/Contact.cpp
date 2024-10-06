@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 02:04:07 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/05 07:17:07 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/10/06 09:34:41 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ Contact::Contact():
     FirstName(""), LastName(""), NickName(""), PhoneNumber(""), DarkestSecret(""){}
 Contact::Contact(std::string f, std::string l, std::string n, std::string p, std::string d):
     FirstName(f), LastName(l), NickName(n), PhoneNumber(p), DarkestSecret(d){}
-
 
 std::string Contact::GetFirstName(){return FirstName;};
 std::string Contact::GetLastName(){return LastName;};
@@ -53,23 +52,23 @@ int checkdata(std::string &str, int choise){
     {
     case 1: 
         if (str.empty() || ValiStrin(str)){
-            return ((std::cout << "Please, Enter  Valid Name!! : "), 1);}
+            return ((std::cout << "Please, Enter  Valid Name [A-Z/a-z] : "), 1);}
         break;
     case 2: 
         if (str.empty() || ValiStrin(str))
-            return ((std::cout << "Please, Enter  Valid Last Name!! : "),1);
+            return ((std::cout << "Please, Enter  Valid Last Name [A-Z/a-z] : "),1);
         break;
     case 3: 
         if (str.empty() || ValiStrin(str))
-            return ((std::cout << "Please, Enter  Valid Nickname!! : "),1);
+            return ((std::cout << "Please, Enter  Valid Nickname [A-Z/a-z] : "),1);
         break;
     case 4: 
-        if (str.empty() || ValiNumber(str))
-            return ((std::cout << "Please, Enter  Phone Number!! : "),1);
+        if (str.empty() || ValiNumber(str) )
+            return ((std::cout << "Please, Enter  Phone Number [0-9] : "),1);
         break;
     case 5: 
-        if (str.empty() || ValiNumber(str) || ValiStrin(str))
-            return ((std::cout << "Please, Enter  Darkest Secret!! : "),1);
+        if (str.empty() || !ValiNumber(str) || !ValiStrin(str) )
+            return ((std::cout << "Please, Enter  Darkest Secret!! [A-Z/a-z][0-9]: "),1);
         break;
     }
     return (0);
@@ -119,25 +118,29 @@ void Contact::AddInfo(){
 
 void Contact::ShowInfo(){
         
-        std::cout << "First Name: " << Contact::GetFirstName() << std::endl;
-        std::cout << "Last Name: " << Contact::GetLastName() << std::endl;
-        std::cout << "Nickname: " << Contact::GetNickName() << std::endl;
-        std::cout << "Phone Number: " << Contact::GetPhoneNumber() << std::endl;
-        std::cout << "Darkest Secret: " << GetDarkestSecret() << std::endl;
+        std::string tab = std::string(3, ' ');
+        std::cout << tab << "First Name: " << Contact::GetFirstName() << std::endl;
+        std::cout << tab << "Last Name: " << Contact::GetLastName() << std::endl;
+        std::cout << tab << "Nickname: " << Contact::GetNickName() << std::endl;
+        std::cout << tab << "Phone Number: " << Contact::GetPhoneNumber() << std::endl;
+        std::cout << tab << "Darkest Secret: " << GetDarkestSecret() << std::endl;
 }
 
+void Contact::PrintData()
+{
+    std::string fn, ln, nkn;
 
-
-// void Contact::print_row()
-// {
-// 	std::string f_ = getFirstName();
-// 	f_ = (f_.length() > 10) ? (f_.substr(0, 9) + '.') : (f_);
-// 	std::string l_ = getLastName();
-// 	l_ = (l_.length() > 10) ? (l_.substr(0, 9) + '.') : (l_);
-// 	std::string n_ = getNickName();
-// 	n_ = (n_.length() > 10) ? (n_.substr(0, 9) + '.') : (n_);
-
-// 	std::cout << std::setw(10) << std::right << f_ << "|";
-// 	std::cout << std::setw(10) << std::right << l_ << "|";
-// 	std::cout << std::setw(10) << std::right << n_ << std::endl;
-// }
+    fn = GetFirstName();
+    ln = GetLastName();
+    nkn = GetNickName();
+    fn = (fn.length() > 10) ? (fn.substr(0, 9) + '.') : (fn + std::string((fn.length() - 10), ' '));
+    ln = (ln.length() > 10) ? (ln.substr(0, 9) + '.') : (ln + std::string((ln.length() - 10), ' '));
+    nkn = (nkn.length() > 10) ? (nkn.substr(0, 9) + '.') : (nkn + std::string((fn.length() - 10), ' '));
+    
+    
+    std::cout   << std::right << fn << " | "
+                << std::right << ln << " | "
+                << std::right << nkn << " | "
+                << std::endl;
+    
+}
