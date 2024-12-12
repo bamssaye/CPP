@@ -6,11 +6,10 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:23:27 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/06 09:24:31 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/12/12 02:29:15 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
 #include "PhoneBook.h"
 
 PhoneBook::PhoneBook() : count(0){
@@ -23,7 +22,7 @@ void PhoneBook::AddNewContact(){
             count++;
         } else {
             std::cout << "PhoneBook is full! Replacing oldest contact." << std::endl;
-            for (int i = 1; i < 8; ++i) {
+            for (int i = 1; i < 8; i++) {
                 contacts[i - 1] = contacts[i]; 
             }
             contacts[7].AddInfo(); 
@@ -46,7 +45,7 @@ void PhoneBook::SearchContact(){
 					<< std::string(std::string(16 * 4, '-')) << std::endl;
 	}
 	else{
-		while (!contacts[++i].checkempty()){
+		while (!contacts[++i].checkempty() && i < 8){//
 			std::cout << std::right << std::setw(15) << i + 1 << " | ";
 			contacts[i].PrintData();
 		}

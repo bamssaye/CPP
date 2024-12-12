@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 03:21:30 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/06 03:27:41 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/12/12 03:07:37 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,26 @@
 
 Account::Account(int initial_deposit ){}
 
-
-
 int Account::getNbAccounts(){return _nbAccounts;}
 int Account::getTotalAmount(){return _totalAmount;}
 int Account::getNbDeposits(){return _totalNbDeposits;}
 int Account::getNbWithdrawals(){return _totalNbWithdrawals;}
 
-void Account::displayAccountsInfos(){}
+void Account::displayAccountsInfos(){
+    
+}
 
+void Account::makeDeposit(int deposit){
+    
+}
+bool Account::makeWithdrawal( int withdrawal ){
+    
+    return (true);
+}
+int Account::checkAmount()const{
+    
+    return (0);
+}
+void Account::displayStatus()const{
+    
+}

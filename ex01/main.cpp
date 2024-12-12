@@ -6,13 +6,11 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:19:49 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/05 04:42:15 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:41:38 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.h"
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
 
 int set_option(PhoneBook &PBook, std::string &choice)
 {

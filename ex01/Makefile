@@ -6,7 +6,7 @@
 #    By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/06 06:52:57 by bamssaye          #+#    #+#              #
-#    Updated: 2024/10/06 07:17:44 by bamssaye         ###   ########.fr        #
+#    Updated: 2024/12/12 01:13:44 by bamssaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ all : $(NAME)
 $(NAME): $(OBJ)
 		$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 clean :
-	rm -rf $(NAME)
-fclean : clean
 	rm -rf $(OB)
+fclean : clean
+	rm -rf $(NAME)
 re : clean all

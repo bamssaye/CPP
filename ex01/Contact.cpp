@@ -6,12 +6,11 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 02:04:07 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/10/06 09:34:41 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:45:48 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
+#include "PhoneBook.h"
 
 Contact::Contact(): 
     FirstName(""), LastName(""), NickName(""), PhoneNumber(""), DarkestSecret(""){}
@@ -133,14 +132,13 @@ void Contact::PrintData()
     fn = GetFirstName();
     ln = GetLastName();
     nkn = GetNickName();
-    fn = (fn.length() > 10) ? (fn.substr(0, 9) + '.') : (fn + std::string((fn.length() - 10), ' '));
-    ln = (ln.length() > 10) ? (ln.substr(0, 9) + '.') : (ln + std::string((ln.length() - 10), ' '));
-    nkn = (nkn.length() > 10) ? (nkn.substr(0, 9) + '.') : (nkn + std::string((fn.length() - 10), ' '));
+    fn = (fn.length() > 10) ? (fn.substr(0, 9) + '.') : (fn + std::string((10 - fn.length()), ' '));
+    ln = (ln.length() > 10) ? (ln.substr(0, 9) + '.') : (ln + std::string((10 - ln.length()), ' '));
+    nkn = (nkn.length() > 10) ? (nkn.substr(0, 9) + '.') : (nkn + std::string((10 - fn.length()), ' '));
     
-    
-    std::cout   << std::right << fn << " | "
-                << std::right << ln << " | "
-                << std::right << nkn << " | "
+    std::cout   << std::left << std::setw(15) << fn << " | "
+                << std::left << std::setw(15) << ln << " | "
+                << std::left << std::setw(15) << nkn << " | "
                 << std::endl;
     
 }
