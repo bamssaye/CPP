@@ -6,14 +6,24 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:23:27 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/12/12 02:29:15 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/02/05 04:13:01 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.h"
 
-PhoneBook::PhoneBook() : count(0){
-    
+PhoneBook::PhoneBook() : count(0){}
+
+int PhoneBook::set_option(std::string choice)
+{
+    for (size_t i = 0; i < choice.length() ; i++){
+    	choice[i] = std::toupper(choice[i]);
+	}
+    if (choice == "EXIT") exit(0);
+    if (choice != "ADD" && choice != "SEARCH") return (1);
+    if (choice == "ADD") AddNewContact();
+    else if (choice == "SEARCH") SearchContact();
+    return (0);
 }
 
 void PhoneBook::AddNewContact(){
@@ -40,14 +50,14 @@ void PhoneBook::SearchContact(){
 				<< std::right << std::setw(21) << "Nick Name"
                 << std::endl;
 	std::cout   << std::string(7 , ' ') << std::string(16 * 4, '-') << std::endl;
-	if(contacts[0].checkempty()){
+	if(contacts[0].Checkempty()){
 		std::cout	<< "No User Found, Choise (ADD) option To add the first Contact. \n"
 					<< std::string(std::string(16 * 4, '-')) << std::endl;
 	}
 	else{
-		while (!contacts[++i].checkempty() && i < 8){//
+		while (!contacts[++i].Checkempty() && i < 8){//
 			std::cout << std::right << std::setw(15) << i + 1 << " | ";
-			contacts[i].PrintData();
+			contacts[i].Printdata();
 		}
 		std::cout << "Enter The Contact Index: ";
 		std::getline(std::cin, _id);
@@ -58,7 +68,7 @@ void PhoneBook::SearchContact(){
 		{
 			int i = _id[0] - 48;
 			std::string row = std::string(10 * 5, '-');
-			if (i >= 1 && i <= 8 && !contacts[i - 1].checkempty())
+			if (i >= 1 && i <= 8 && !contacts[i - 1].Checkempty())
 			{
 				std::cout << row << std::endl;
 				std::cout << std::string(3, ' ') << "Contact Id : " << i << std::endl;

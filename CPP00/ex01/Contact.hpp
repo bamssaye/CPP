@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:13:14 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/12/12 00:46:05 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/02/05 04:16:27 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 #define CONTACT_HPP
 
 class Contact {
+  
+  std::string _FirstName, _LastName, _NickName, _PhoneNumber, _DarkestSecret;
+  std::string _Checklengh(std::string str);
+  int _CheckData(std::string str, int choice);
+  int _ValiNumber(std::string str);
+  int _ValiStrin(std::string str);
+  
 public:
-    
-    Contact();
-    Contact(std::string f, std::string l, std::string n, std::string p, std::string d);
-    
-    std::string GetFirstName();
-    std::string GetLastName();
-    std::string GetNickName();
-    std::string GetPhoneNumber();
-    std::string GetDarkestSecret();
-    
-    void AddInfo();
-    void ShowInfo();
-    bool checkempty();
-    void PrintData();
-    
-private:
-  std::string FirstName, LastName, NickName, PhoneNumber, DarkestSecret;
+
+  Contact();
+  void AddInfo();
+  void ShowInfo();
+  void Printdata();
+  int  Checkempty();
 };
 
 #endif

@@ -6,33 +6,12 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:19:49 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/12/12 00:41:38 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/02/05 04:27:36 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.h"
 
-int set_option(PhoneBook &PBook, std::string &choice)
-{
-    if (choice == "ADD"){
-        PBook.AddNewContact();
-    }
-    else if (choice == "SEARCH"){
-        PBook.SearchContact();
-    }
-    return (0);
-}
-int _checkin(std::string &choice)
-{
-    for(size_t i = 0; i < choice.length() ; i++){
-        choice[i] = std::toupper(choice[i]);
-    }
-    if (choice == "ADD" || choice == "SEARCH")
-        return (0);
-    else if (choice == "EXIT")
-        exit(0);
-    return (1);
-}
 int main(int ac, char **av)
 {
     (void)av;
@@ -46,10 +25,8 @@ int main(int ac, char **av)
             std::getline(std::cin, choice);
             if (std::cin.eof())
                 break;
-            if (_checkin(choice))
+            if (PBook.set_option(choice))
                 std::cout << TRY ;
-            if (set_option(PBook, choice))
-                break;
         }
     }
     else
