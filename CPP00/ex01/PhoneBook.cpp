@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:23:27 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/02/05 04:13:01 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/03/04 03:08:24 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 PhoneBook::PhoneBook() : count(0){}
 
-int PhoneBook::set_option(std::string choice)
+/*
+Choice : {ADD, EXIT, SEARCH}
+ADD -> add new contact.
+SEARCH -> search for contact
+EXIT -> exit the progam [Phone Book]
+*/
+int PhoneBook::set_option(std::string &choice)
 {
     for (size_t i = 0; i < choice.length() ; i++){
     	choice[i] = std::toupper(choice[i]);

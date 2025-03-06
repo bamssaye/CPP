@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:01:48 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/02/05 04:16:44 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/03/04 03:08:19 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class PhoneBook {
     
 public:
     PhoneBook();
-    int set_option(std::string choice);
+    int set_option(std::string &choice);
     
 };
 

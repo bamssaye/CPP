@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 02:04:07 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/02/05 04:15:40 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/03/04 03:08:04 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Contact::Contact():_FirstName(""), _LastName(""), _NickName(""), _PhoneNumber(""), _DarkestSecret(""){}
 
-std::string Contact::_Checklengh(std::string str){
+std::string Contact::_Checklengh(std::string &str){
         return ((str.length() > 10) ? 
                 (str.substr(0, 9) + '.') :
                 (str + std::string((10 - str.length()), ' ')));
 }
 
-int Contact::_CheckData(std::string str, int choice){
+int Contact::_CheckData(std::string &str, int choice){
     
     switch (choice){
     case 1: 
@@ -55,7 +55,7 @@ int Contact::Checkempty(){
             _DarkestSecret.empty());
 }
 
-int Contact::_ValiStrin(std::string str){
+int Contact::_ValiStrin(std::string &str){
     for (std::size_t i = 0; i < str.length() ; i++){
         if (!isalpha(str[i])) {
             return (1);}  
@@ -63,7 +63,7 @@ int Contact::_ValiStrin(std::string str){
     return (0);
 }
 
-int Contact::_ValiNumber(std::string str){
+int Contact::_ValiNumber(std::string &str){
     for (std::size_t i = 0; i < str.length() ; i++){
         if (!isdigit(str[i]))
             return (1);
