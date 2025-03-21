@@ -1,6 +1,6 @@
 NAME = Animal
 CXX = c++
-CXXFLAGS = 	-Wall -Wextra -Werror -std=c++98  #-fsanitize=address 
+CXXFLAGS = 	-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 FUN = *.cpp
 
 all : $(NAME)

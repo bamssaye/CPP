@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 02:12:13 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/03/21 06:28:40 by bamssaye         ###   ########.fr       */
+/*   Created: 2025/03/19 02:12:10 by bamssaye          #+#    #+#             */
+/*   Updated: 2025/03/19 04:18:51 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CAT_HPP
-#define __CAT_HPP
+#ifndef __DOG_HPP
+#define __DOG_HPP
 
 
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
-class Cat : public Animal {
-
-
+class Dog : public Animal {
+    Brain *_dog;
 public:
-    Cat();
-    Cat(const Cat &ori);
-    Cat& operator=(const Cat &ori);
-    virtual ~Cat();
-    virtual void makeSound()const;
+    Dog();
+    Dog(const Dog & ori);
+    ~Dog();
+    Dog& operator=(Dog &ori); 
+    void makeSound()const;
 };
 
 #endif

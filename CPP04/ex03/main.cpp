@@ -1,31 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 02:12:13 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/03/21 06:28:40 by bamssaye         ###   ########.fr       */
+/*   Created: 2025/03/21 06:31:49 by bamssaye          #+#    #+#             */
+/*   Updated: 2025/03/21 06:31:50 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CAT_HPP
-#define __CAT_HPP
-
-
-#include <iostream>
-#include "Animal.hpp"
-
-class Cat : public Animal {
-
-
-public:
-    Cat();
-    Cat(const Cat &ori);
-    Cat& operator=(const Cat &ori);
-    virtual ~Cat();
-    virtual void makeSound()const;
-};
-
-#endif

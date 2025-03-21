@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 02:12:10 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/03/19 04:18:51 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/03/21 06:27:32 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ class Dog : public Animal {
 public:
     Dog();
     Dog(const Dog & ori);
-    ~Dog();
+    virtual ~Dog();
     Dog& operator=(Dog &ori); 
-    void makeSound()const;
+    virtual void makeSound()const;
 };
 
 #endif

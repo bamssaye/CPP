@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 03:07:50 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/03/19 03:27:29 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/03/21 03:35:47 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ class WrongCat : public WrongAnimal {
 public:
     WrongCat();
     WrongCat(const WrongCat &ori);
-    ~WrongCat();
     WrongCat& operator=(const WrongCat &ori);
+    ~WrongCat();
+
     void makeSound()const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 02:24:55 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/03/21 06:12:38 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/03/21 06:31:01 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 
 int main()
 {
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    
-    
+    // const Animal* j = new Dog();
+    // const Animal* i = new Cat();
+    // Animal i;
     
     std::cout << std::string(10,'/')<< std::endl;
     
@@ -37,11 +36,11 @@ int main()
 
         Cat tm = bas;
     }
-    std::cout << std::string(10,'/')<< std::endl;
-    std::cout << i->getType() << std::endl;
-    std::cout << j->getType() << std::endl;
-    std::cout << std::string(10,'/')<< std::endl;
-    delete j;
-    delete i;
+    // std::cout << std::string(10,'/')<< std::endl;
+    // std::cout << i->getType() << std::endl;
+    // std::cout << j->getType() << std::endl;
+    // std::cout << std::string(10,'/')<< std::endl;
+    // delete j;
+    // delete i;
     return 0;
 }

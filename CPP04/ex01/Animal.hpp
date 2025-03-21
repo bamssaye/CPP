@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 02:10:15 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/03/19 06:32:02 by bamssaye         ###   ########.fr       */
+/*   Updated: 2025/03/21 05:07:48 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ protected:
     std::string _Type;
 public:
     Animal();
-    Animal& operator=(const Animal&ori);
     Animal(const Animal&ori);
-    Animal(std::string type);
+    Animal& operator=(const Animal&ori);
     virtual ~Animal();
+    
     virtual void makeSound()const;
     void setType(std::string type);
     std::string  getType()const;
