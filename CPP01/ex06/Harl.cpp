@@ -42,5 +42,6 @@ void    Harl::complain(){
             case 3: error(); break;
         } 
     }
-    std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+    if (i > 3){
+    	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;}
 }
