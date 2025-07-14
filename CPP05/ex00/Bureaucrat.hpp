@@ -1,34 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 03:17:20 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/05/10 23:23:21 by bamssaye         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #pragma once
 
 #include <iostream>
 #include <exception>
 
 class Bureaucrat {
-    const std::string _name;
+    std::string const _name;
     int _grade;
-public:
     Bureaucrat();
+public:
+    Bureaucrat(std::string name, int grade);
     Bureaucrat(const Bureaucrat & obj);
     Bureaucrat& operator=(const Bureaucrat& obj);
     ~Bureaucrat();
     //
-    Bureaucrat(std::string name, int grade);
-    //
-    const std::string& getName();
-    int getGrade() const;
-    //
+
+    
     class GradeTooHighException : public std::exception{
     public:
         virtual const char* what() const throw(){
@@ -41,7 +27,13 @@ public:
             return ("Grade Too Low.");
         }
     };
+
     //
+    const std::string& getName() const;
+    int getGrade() const;
+    
+    //
+    
     void incGrade();
     void decGrade();
 };

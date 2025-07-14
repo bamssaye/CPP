@@ -1,43 +1,30 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AForm.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 11:55:58 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/05/11 21:11:10 by bamssaye         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
-#ifndef AForm_HPP
-#define AForm_HPP
+#pragma once
 
 #include <iostream>
 #include <exception>
 #include "Bureaucrat.hpp"
 
 class AForm {
-    const std::string _name;
-    bool _signed;
-    const int _gradeSign;
-    const int _gradeExecute;
-public:
+    
+    std::string const   _name;
+    bool                _signed;
+    int const           _gradeSign;
+    int const           _gradeExecute;
     AForm();
+
+public:
+
     AForm(std::string name, int _gradeSign, int _gradeExecute);
     AForm(const AForm& ob);
     AForm& operator=(const AForm&ob);
     virtual ~AForm();
 
-    const std::string& getName();
-    bool getSigned();
-    int getgradeSign()const;
-    int getgradeExecute()const;
+    const   std::string& getName() const;
+    bool    getSigned() const;
+    int     getgradeSign() const;
+    int     getgradeExecute() const;
+    
 
-    virtual void beSigned(Bureaucrat& ob) = 0;
-    void execute(Bureaucrat const & executor) const;
-    //
     class GradeTooHighException : public std::exception{
         public:
             virtual const char* what() const throw(){
@@ -51,9 +38,9 @@ public:
             }
     };
     
+
+    void    beSigned(Bureaucrat& ob);
+    virtual void execute(Bureaucrat const & executor) const = 0;
+    
 };
-
-std::ostream& operator<<(std::ostream& os, AForm& ob);
-
-
-#endif
+std::ostream&   operator<<(std::ostream& os, AForm& ob);

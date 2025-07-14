@@ -1,18 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AForm.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 20:13:24 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/05/11 21:49:26 by bamssaye         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "AForm.hpp"
 
 AForm::AForm():_name("DF_AForm"), _signed(false), _gradeSign(1), _gradeExecute(1){}
+
 AForm::AForm(std::string name, int _gradeSign, int _gradeExecute):_name(name), _signed(false), _gradeSign(_gradeSign), _gradeExecute(_gradeExecute){
     if (_gradeSign > 150 || _gradeExecute > 150)
         throw GradeTooLowException();
@@ -27,21 +16,24 @@ AForm& AForm::operator=(const AForm&ob){
     return *this;
 }
 AForm::~AForm(){}
-////
 
-const std::string& AForm::getName(){ return _name;}
-bool AForm::getSigned(){ return _signed;}
+
+const std::string& AForm::getName() const{ return _name;}
+bool AForm::getSigned() const { return _signed;}
 int AForm::getgradeSign() const{ return _gradeSign;}
 int AForm::getgradeExecute() const{ return _gradeExecute;}
 
-////
+
 
 std::ostream& operator<<(std::ostream& os, AForm& ob){
-    os << ob.getName() << ob.getSigned();
+    os  << "AForm Name: " << ob.getName() 
+        << "\nGrade Execute : " << ob.getgradeExecute()
+        << "\nGrade Sign : " << ob.getgradeSign()
+        << "\nsigned : " << ((!ob.getSigned()) ? "False": "True") ;  
     return os;
 }
 
-////
+
 
 void AForm::beSigned(Bureaucrat& Bur){
     if (Bur.getGrade() > this->_gradeSign)

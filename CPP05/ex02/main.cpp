@@ -1,36 +1,33 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 03:23:05 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/05/11 21:53:13 by bamssaye         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 int main(){
    
     try{
+
+        ShrubberyCreationForm sh1("HInd");
+        Bureaucrat b1("B1", 130);
+        std::cout << std::string(10,'-') << std::endl;
+        std::cout << sh1 << std::endl;
+        std::cout << std::string(10,'-') << std::endl;
+        std::cout << b1 << std::endl;
+        std::cout << std::string(10,'-') << std::endl;
+        b1.signForm(sh1);
+        // b1.executeForm(sh1);
         
-        Form a1("FORM1", 15, 30);
-        Bureaucrat b1("B1", 15);
-        b1.signForm(a1);
+        sh1.execute(b1);
+        std::cout << std::string(10,'-') << std::endl;
         
     }catch(std::exception & e) {
         std::cerr  << e.what() << std::endl;
     }
     
-    try{
+    // try{
         
-        Form a2("FORM2", 19, 30);
-        Bureaucrat b2("B2", 20);
-        b2.signForm(a2);
+    //     Form a2("FORM2", 19, 30);
+    //     Bureaucrat b2("B2", 20);
+    //     b2.signForm(a2);
         
-    }catch(std::exception & e) {
-        std::cerr  << e.what() << std::endl;
-    }
+    // }catch(std::exception & e) {
+    //     std::cerr  << e.what() << std::endl;
+    // }
 }

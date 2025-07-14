@@ -1,41 +1,28 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 11:55:58 by bamssaye          #+#    #+#             */
-/*   Updated: 2025/05/11 21:11:10 by bamssaye         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
-#ifndef FORM_HPP
-#define FORM_HPP
+#pragma once
 
 #include <iostream>
 #include <exception>
 #include "Bureaucrat.hpp"
 
 class Form {
-    const std::string _name;
-    bool _signed;
-    const int _gradeSign;
-    const int _gradeExecute;
-public:
+    
+    std::string const   _name;
+    bool                _signed;
+    int const           _gradeSign;
+    int const           _gradeExecute;
     Form();
+public:
+
     Form(std::string name, int _gradeSign, int _gradeExecute);
     Form(const Form& ob);
     Form& operator=(const Form&ob);
     ~Form();
-
-    const std::string& getName();
-    bool getSigned();
-    int getgradeSign()const;
-    int getgradeExecute()const;
-
-    void beSigned(Bureaucrat& ob);
+    //
+    const   std::string& getName() const;
+    bool    getSigned() const;
+    int     getgradeSign() const;
+    int     getgradeExecute() const;
+    
     //
     class GradeTooHighException : public std::exception{
         public:
@@ -50,9 +37,8 @@ public:
             }
     };
     
+    //
+    void    beSigned(Bureaucrat& ob);
+    
 };
-
-std::ostream& operator<<(std::ostream& os, Form& ob);
-
-
-#endif
+std::ostream&   operator<<(std::ostream& os, Form& ob);
