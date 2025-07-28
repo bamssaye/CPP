@@ -3,7 +3,12 @@
 int main(int ac, char **av){
 
     if (ac != 2)
-        return (std::cerr << "Error. many argument." << std::endl, 1);
+        return (printError());
     std::string in = av[1];
-    RPN rpn(in);
+    RPN rpn;
+    if (!rpn.CheckRpnFormat(in))
+        return (printError());
+    rpn.Add(in);
+    rpn.CalculateRpn();
+    rpn.ShowTotal();
 }   
