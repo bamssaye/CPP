@@ -40,3 +40,10 @@ void AForm::beSigned(Bureaucrat& Bur){
         throw AForm::GradeTooLowException();
     this->_signed = true ;
 }
+
+void AForm::_SignedGradeCheck(Bureaucrat const & Bur) const{
+    if ((Bur.getGrade() > this->getgradeExecute()))
+        throw AForm::GradeTooLowException();
+    if (!this->getSigned())
+        throw AForm::FormNotSignedException();
+}

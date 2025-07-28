@@ -12,7 +12,7 @@ int main(){
         std::cout << b1 << std::endl;
         std::cout << std::string(10,'-') << std::endl;
         b1.signForm(sh1);
-        // b1.executeForm(sh1);
+        b1.executeForm(sh1);
         
         sh1.execute(b1);
         std::cout << std::string(10,'-') << std::endl;

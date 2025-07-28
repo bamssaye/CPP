@@ -1,9 +1,9 @@
 #include "PresidentialPardonForm.hpp"
 
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target):AForm(target, 25, 5),_target(target){}
+PresidentialPardonForm::PresidentialPardonForm(std::string target):Form(target, 25, 5),_target(target){}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj):AForm(obj._target, obj.getSigned(), obj.getgradeExecute()){
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj):Form(obj._target, obj.getSigned(), obj.getgradeExecute()){
     *this = obj;
 }
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj){

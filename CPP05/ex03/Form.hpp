@@ -4,21 +4,21 @@
 #include <exception>
 #include "Bureaucrat.hpp"
 
-class AForm {
+class Form {
     
     std::string const   _name;
     bool                _signed;
     int const           _gradeSign;
     int const           _gradeExecute;
-    AForm();
+    Form();
 protected:
     void _SignedGradeCheck(Bureaucrat const & Bur)const;
 public:
 
-    AForm(std::string name, int _gradeSign, int _gradeExecute);
-    AForm(const AForm& ob);
-    AForm& operator=(const AForm&ob);
-    virtual ~AForm();
+    Form(std::string name, int _gradeSign, int _gradeExecute);
+    Form(const Form& ob);
+    Form& operator=(const Form&ob);
+    virtual ~Form();
 
     const   std::string& getName() const;
     bool    getSigned() const;
@@ -49,4 +49,4 @@ public:
     virtual void execute(Bureaucrat const & executor) const = 0;
     
 };
-std::ostream&   operator<<(std::ostream& os, AForm& ob);
+std::ostream&   operator<<(std::ostream& os, Form& ob);

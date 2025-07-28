@@ -1,9 +1,9 @@
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target):AForm(target, 145, 137),_target(target){}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target):Form(target, 145, 137),_target(target){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj):AForm(obj._target, obj.getSigned(), obj.getgradeExecute()){
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj):Form(obj._target, obj.getSigned(), obj.getgradeExecute()){
     *this = obj;
 }
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj){
