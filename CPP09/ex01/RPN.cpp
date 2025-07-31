@@ -1,17 +1,54 @@
 #include "RPN.hpp"
 
-RPN::RPN(){}
+RPN::RPN():_total(0){}
 RPN::~RPN(){}
 
-bool RPN::CheckRpnFormat(std::string& rpn){
+bool RPN::CheckRpnFormat(const std::string& rpn){
+    std::istringstream s(rpn);
+    std::string str;
 
+    int  i = 0;
+    while (s >> str){
+        if (str.length() == 1 && isdigit(str.at(0)))
+            i++;
+        else if (str.length() == 1 && isOperator(str.at(0))){
+            if (i < 2) return false;
+            i--;
+        }else
+            return false;
+    }
+    return i == 1;
 }
-void RPN::Add(std::string& rpn){
 
+void RPN::CalculateRpn(const std::string& rpn){
+    std::istringstream s(rpn);
+    std::string str;
+
+    int  a, b;
+    while (s >> str){
+        if (isdigit(str.at(0)))
+            this->_stack.push(std::atoi(str.c_str())); // 7 7 
+        else if (isOperator(str.at(0))){
+            b = _stack.top(); _stack.pop();
+            a = _stack.top(); _stack.pop();
+            if (str == "+") _stack.push(a + b);
+            else if (str == "-") _stack.push(a - b);
+            else if (str == "*") _stack.push(a * b);
+            else if (str == "/") {
+                if (!b) throw std::runtime_error("Error. Division by zero");
+                _stack.push(a / b);
+            }
+        }
+    }
+    _total = _stack.top();
+    _stack.pop();
 }
-void RPN::CalculateRpn(){
+int RPN::getTotal() const { return this->_total;}
 
+bool isOperator(int c) {
+    return c == '+' || c == '-' || c == '*' || c == '/';
 }
-void RPN::ShowTotal(){
 
+int printError(){
+    return ((std::cerr << "Error." << std::endl), 1);
 }

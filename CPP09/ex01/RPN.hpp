@@ -1,24 +1,23 @@
 #pragma once
 
 #include <iostream>
+#include <sstream>
 #include <algorithm>
-#include <vector>
-#include <map>
+#include <cctype>
 #include <stack>
+#include <exception>
 
 class RPN{
     int             _total;
     std::stack<int> _stack;
-    std::string     _rpn;
 public:
     RPN();
     ~RPN();
 
-    bool CheckRpnFormat(std::string& rpn);
-    void Add(std::string& rpn);
-    void CalculateRpn();
-    void ShowTotal();
+    bool CheckRpnFormat(const std::string& rpn);
+    void CalculateRpn(const std::string& rpn);
+    int getTotal() const;
 };
-int printError(){
-    return ((std::cerr << "Error." << std::endl), 1);
-}
+
+bool    isOperator(int c);
+int     printError();

@@ -8,7 +8,12 @@ int main(int ac, char **av){
     RPN rpn;
     if (!rpn.CheckRpnFormat(in))
         return (printError());
-    rpn.Add(in);
-    rpn.CalculateRpn();
-    rpn.ShowTotal();
+    try {
+    rpn.CalculateRpn(in);
+    std::cout << rpn.getTotal() << std::endl;
+    } catch(std::exception &e){
+        std::cout << e.what() << std::endl;
+    }
 }   
+
+
