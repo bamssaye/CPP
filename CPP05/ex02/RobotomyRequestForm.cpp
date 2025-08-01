@@ -14,11 +14,15 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 }
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
+#include <ctime>
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
     
     this->_SignedGradeCheck(executor);
-    std::cout   << "Makes some drilling noises," 
-                <<  this->getName() + " has been robotomized by "+ executor.getName() +" successfully 50% of the time."
-                << std::endl;
+    srand(time(NULL));
+    std::cout   << "Makes some drilling noises, " << std::endl;
+    if (rand() & 1)
+		std::cout << this->_target << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << "Robotomization failed" << std::endl;
 }

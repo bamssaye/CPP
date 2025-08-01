@@ -1,11 +1,12 @@
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 int main(){
    
     try{
 
-        ShrubberyCreationForm sh1("HInd");
-        Bureaucrat b1("B1", 130);
+        RobotomyRequestForm sh1("HInd");
+        Bureaucrat b1("B1", 1);
         std::cout << std::string(10,'-') << std::endl;
         std::cout << sh1 << std::endl;
         std::cout << std::string(10,'-') << std::endl;
