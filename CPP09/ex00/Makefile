@@ -1,9 +1,19 @@
 NAME = btc
-CPP = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+OBGDIR = obj
+CXXFLAGS = 	-Wall -Wextra -Werror -std=c++98 
 FUN = main.cpp  BitcoinExchange.cpp
+OBJ =  $(addprefix $(OBGDIR)/,  $(notdir $(FUN:.cpp=.o)))
 
-all:
-	$(CPP) $(CXXFLAGS)  $(FUN) -o $(NAME)
-clean:
+$(OBGDIR)/%.o:%.cpp
+	@mkdir -p $(OBGDIR)
+	$(CXX) $(CXXFLAGS)  -c $< -o $@
+
+all : $(NAME)
+$(NAME) : $(OBJ)
+	$(CXX) $(CXXFLAGS) $(FUN) -o $(NAME)
+clean :
+	rm -rf $(OBGDIR)
+fclean : clean
 	rm -rf $(NAME)
+re : clean all

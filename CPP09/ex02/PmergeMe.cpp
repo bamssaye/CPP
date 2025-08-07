@@ -1,4 +1,22 @@
 #include "PmergeMe.hpp"
+#include <sstream>
+#include <string>
+template <typename T>
+std::string _toString(T value)
+{
+    std::ostringstream oss;
+    oss << value;
+    return oss.str();
+}
+template <typename Iterator, typename Predicate>
+bool _all_of(Iterator begin, Iterator end, Predicate pred) {
+    while(begin != end){
+        if (!pred(*begin))
+            return false;
+        ++begin;
+    }
+    return true;
+}
 
 PmergeMe::PmergeMe(char ** av){
     this->_validInput(av);
@@ -17,11 +35,11 @@ void PmergeMe::_fillstack(char ** av){
     av++;
     for(int i = 0; av[i] ; i++){
         n = av[i];
-        num = std::stoi(n);
+        num = std::atoi(n.c_str());
         this->_listnum.push_back(num);
         this->_dequenum.push_back(num);
         this->_dequenumvec.push_back(num);
-        this->_input += std::to_string(num) + " ";
+        this->_input += _toString(num) + " ";
     }
     this->_size = this->_listnum.size();
 }
@@ -73,7 +91,7 @@ std::string PmergeMe::PrintContiner(T& type){
     std::string output;
     typename T::iterator it = type.begin();
     while (it != type.end()){
-        output += std::to_string(*it) + " ";
+        output += _toString(*it) + " ";
         it++;
     }
     return output;
@@ -182,9 +200,9 @@ void PmergeMe::_validInput(char ** av){
 
     for(int i = 0; av[i] ; i++){
         n = av[i];
-        if (!std::all_of(n.begin(), n.end(), ::isdigit))
-            throw std::runtime_error("Error.oko");
-        num = std::stoi(n);
+        if (!_all_of(n.begin(), n.end(), ::isdigit))
+            throw std::runtime_error("Error.");
+        num = std::atoi(n.c_str());
         if (num < 0)
             throw std::runtime_error("Error.");
         list.push_back(num);

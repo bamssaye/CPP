@@ -2,8 +2,8 @@
 
 BitcoinExchange::BitcoinExchange(std::string& input):_filetype(false){
     try{
-        this->_openInputfile = _openFile(input);
-        this->_openDatafile = _openFile("data.csv");
+        this->_openInputfile.open(input.c_str());
+        this->_openDatafile.open("data.csv");
         this->_Inputfile = _fillMap(this->_openInputfile, "date | value", " | ");
         this->_filetype = true;
         this->_Datafile = _fillMap(this->_openDatafile, "date,exchange_rate", ",");
@@ -11,6 +11,7 @@ BitcoinExchange::BitcoinExchange(std::string& input):_filetype(false){
         std::cout << e.what() << std::endl;
     }
 }
+
 
 BitcoinExchange::~BitcoinExchange(){
     if (this->_openDatafile.is_open())
@@ -20,13 +21,18 @@ BitcoinExchange::~BitcoinExchange(){
 }
 
 float BitcoinExchange::_checkValue(std::string value){
-    float v = std::stof(value);
+    float v = std::atof(value.c_str());
     if (this->_filetype)
         return v;
     if (v > 1000.0)
         throw std::runtime_error("too large a number.");
     if (v < 0.0)
         throw std::runtime_error("not a positive number.");
+    for(size_t i = 0; i < value.size() ; i++){
+        if (!std::isdigit(value[i]) && value[i] != '.'){
+            throw std::runtime_error("bad input.");
+        }
+    }
     return v;
 }
 
@@ -34,7 +40,7 @@ std::string BitcoinExchange::_checkDate(std::string date){
     std::string da[3];
     size_t s = 0,e = date.find("-");
     int i = 0;
-
+    
     while(e != std::string::npos && i < 2){
         da[i++] = date.substr(s, e - s);
         s = e + 1;
@@ -43,22 +49,15 @@ std::string BitcoinExchange::_checkDate(std::string date){
     da[i] = date.substr(s, e - s);
     if (da[0].length() != 4 || da[1].length() != 2 || da[2].length() != 2)
         throw std::runtime_error("Year-Month-Day");
-    else if (std::stoi(da[0]) < 1997 || std::stoi(da[0]) > 2025)
+    else if (std::atoi(da[0].c_str()) < 1997 || std::atoi(da[0].c_str()) > 2025)
         throw std::runtime_error("Year-Month-Day");
-    else if (std::stoi(da[1]) < 1 || std::stoi(da[1]) > 12)
+    else if (std::atoi(da[1].c_str()) < 1 || std::atoi(da[1].c_str()) > 12)
         throw std::runtime_error("Year-Month-Day");
-    else if (std::stoi(da[2]) < 1 || std::stoi(da[2]) > 31)
+    else if (std::atoi(da[2].c_str()) < 1 || std::atoi(da[2].c_str()) > 31)
         throw std::runtime_error("Year-Month-Day");
     return date;
 }
 
-std::ifstream BitcoinExchange::_openFile(std::string filename){
-    std::ifstream file;
-    file.open(filename);
-    if (!file.is_open())
-        throw std::runtime_error("Error, could not open file : " + filename);
-    return file;
-}
 
 std::vector<std::map<std::string, float> > BitcoinExchange::_fillMap(std::ifstream& file, std::string format, std::string del){
     std::map<std::string, float> map;
@@ -107,7 +106,7 @@ void BitcoinExchange::getData() {
         std::map<std::string, float>::const_iterator it = _Inputfile[i].begin();
             date = it->first;
             value = it->second;
-            try { _checkDate(date); } catch (const std::exception& e) { 
+            try { _checkDate(date);} catch (const std::exception& e) { 
                 std::cout << "Error: " << date << std::endl;
                 continue; 
             }
