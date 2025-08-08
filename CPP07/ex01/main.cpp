@@ -1,0 +1,43 @@
+#include "iter.hpp"
+
+class Awesome{
+    int _n;
+public:
+    Awesome():_n(42){return;}
+    int get()const{return this->_n;}
+};
+std::ostream& operator<<(std::ostream &o, Awesome const &r){
+    o << r.get();return o;
+}
+template <typename T>
+void print(T const & x){std::cout << x << std::endl;return;}
+
+
+int main(){
+    int tab[] = {0,1,2,3,4};
+    Awesome tab2[5];
+    iter(tab, 5, print<int>);
+    iter(tab2, 5, print<Awesome>);
+    // int a[] = {1,2,3,4,5,6,7};
+    // char b[] = {'a','b','c','d'};
+    // std::string c[] = {"com", "ma", "fr", "us", "jp"};
+    // std::cout <<std::string(10,'=') << std::endl;
+    // iter(a, 7, p<int>);
+    // std::cout <<std::string(10,'=') << std::endl;
+    // iter(b, 4, p<char>);
+    // std::cout <<std::string(10,'=')<< std::endl;
+    // iter(c, 5, p<std::string>);
+    // std::cout  <<std::string(10,'=')<< std::endl;
+    // int * list = NULL;
+    // list = new int[10];
+    // for (int i = 0; i < 10 ; i++){
+    //     list[i] = 1 + i;
+    // }
+    // iter(list, 10, print<int>);
+    // if (list)
+    //     iter(list, 10, p<int>);
+    // delete[] list;
+}
+
+
+

@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/17 01:24:59 by bamssaye          #+#    #+#             */
+/*   Updated: 2025/03/23 08:41:26 by bamssaye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "FragTrap.hpp"
+
+FragTrap::FragTrap():ClapTrap(){
+    _name = "DeFragTrap";
+    _hitPoint = 100;
+    _energyPoint = 100;
+    _attackDamage = 30;
+    std::cout << "FragTrap Default constructor called" << std::endl;
+}
+
+FragTrap::FragTrap(std::string name):ClapTrap(name){
+    _hitPoint = 100;
+    _energyPoint = 100;
+    _attackDamage = 30;
+    std::cout << "FragTrap constructor called" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap & ori):ClapTrap(ori._name){
+    std::cout << "FragTrap Copy constructor called" << std::endl;
+    
+    this->_hitPoint = ori._hitPoint;
+    this->_energyPoint = ori._energyPoint;
+    this->_attackDamage = ori._attackDamage;
+}
+
+FragTrap& FragTrap::operator=(const FragTrap & ori){
+    std::cout << "FragTrap Copy assignment operator called" << std::endl;
+    if (this == &ori)
+        return *this;
+    
+    this->_name = ori._name;
+    this->_hitPoint = ori._hitPoint;
+    this->_energyPoint = ori._energyPoint;
+    this->_attackDamage = ori._attackDamage;
+    
+    return (*this);
+}
+
+FragTrap::~FragTrap(){
+    std::cout << "FragTrap Destructor called" << std::endl;
+}
+
+void FragTrap::highFivesGuys(void){
+    std::cout   << "FragTrap " << this->_name 
+                << " : Positive high fives." << std::endl;
+}
